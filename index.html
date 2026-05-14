@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Excel</title>
+    <title>Mi Portafolio</title>
 
     <style>
+
         body{
             font-family: Arial, sans-serif;
             background:#f4f4f4;
@@ -14,6 +15,98 @@
 
         h1{
             color:#333;
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        /* TABLA DE HABILIDADES */
+
+        .tabla-habilidades{
+            width:100%;
+            max-width:700px;
+            margin:0 auto 40px auto;
+            border-collapse:collapse;
+            background:white;
+            box-shadow:0 2px 5px rgba(0,0,0,0.1);
+            border-radius:10px;
+            overflow:hidden;
+        }
+
+        .tabla-habilidades th{
+            background:#007bff;
+            color:white;
+            padding:15px;
+        }
+
+        .tabla-habilidades td{
+            padding:15px;
+            border-bottom:1px solid #ddd;
+        }
+
+        .barra{
+            width:100%;
+            background:#ddd;
+            border-radius:20px;
+            overflow:hidden;
+            height:20px;
+        }
+
+        .progreso{
+            height:100%;
+            text-align:center;
+            color:white;
+            font-size:12px;
+            line-height:20px;
+        }
+
+        .excel{
+            width:90%;
+            background:#28a745;
+        }
+
+        .java{
+            width:35%;
+            background:#ff9800;
+        }
+
+        .sql{
+            width:65%;
+            background:#6f42c1;
+        }
+
+        .html{
+            width:65%;
+            background:#dc3545;
+        }
+
+        /* BOTONES */
+
+        .menu{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .menu button{
+            padding:12px 25px;
+            margin:10px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            background:#007bff;
+            color:white;
+            font-size:16px;
+            transition:0.3s;
+        }
+
+        .menu button:hover{
+            background:#0056b3;
+            transform:scale(1.05);
+        }
+
+        /* SECCIONES */
+
+        .seccion{
+            display:none;
         }
 
         .archivo{
@@ -37,34 +130,121 @@
         a:hover{
             background:#218838;
         }
+
     </style>
 </head>
 <body>
 
-    <h1>Mi Portafolio de Excel</h1>
+    <h1>Mi Portafolio</h1>
 
-    <div class="archivo">
-        <h3>Contabilidad Personal</h3>
-        <p>Tablas dinámicas y gráficos.</p>
+    <!-- TABLA DE CONOCIMIENTOS -->
 
-       <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRlfPS6ch6Gu74iFxEPpZCE4xIlMb8lWGdZg6AkGTDWhe7GPVUML4puKIdLY8jLPw/pubhtml"
-width="100%"
-height="600">
-</iframe>
-        
-        <a href="archivos/archivos/Contabilidad_personal.xlsx" download>
-            Descargar archivo Excel
-        </a>
+    <table class="tabla-habilidades">
+
+        <tr>
+            <th>Programa</th>
+            <th>Nivel de conocimiento</th>
+        </tr>
+
+        <tr>
+            <td>Excel</td>
+            <td>
+                <div class="barra">
+                    <div class="progreso excel">Avanzado</div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Java</td>
+            <td>
+                <div class="barra">
+                    <div class="progreso java">Básico</div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>SQL Server</td>
+            <td>
+                <div class="barra">
+                    <div class="progreso sql">Intermedio</div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>HTML / CSS</td>
+            <td>
+                <div class="barra">
+                    <div class="progreso html">Intermedio</div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    <!-- BOTONES -->
+
+    <div class="menu">
+        <button onclick="mostrarSeccion('excel')">Excel</button>
+        <button onclick="mostrarSeccion('java')">Java</button>
     </div>
 
-    <div class="archivo">
-        <h3>Control de Inventario</h3>
-        <p>Sistema básico de inventario en Excel.</p>
+    <!-- SECCION EXCEL -->
 
-        <a href="archivos/inventario.xlsx" download>
-            Descargar Excel
-        </a>
+    <div id="excel" class="seccion">
+
+        <h2>Proyectos Excel</h2>
+
+        <div class="archivo">
+            <h3>Contabilidad Personal</h3>
+            <p>Tablas dinámicas y gráficos.</p>
+
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRlfPS6ch6Gu74iFxEPpZCE4xIlMb8lWGdZg6AkGTDWhe7GPVUML4puKIdLY8jLPw/pubhtml"
+                width="100%"
+                height="600">
+            </iframe>
+
+            <a href="archivos/Contabilidad_personal.xlsx" download>
+                Descargar archivo Excel
+            </a>
+        </div>
+
     </div>
+
+    <!-- SECCION JAVA -->
+
+    <div id="java" class="seccion">
+
+        <h2>Proyectos Java</h2>
+
+        <div class="archivo">
+            <h3>Calculadora Java</h3>
+            <p>Proyecto básico en Java.</p>
+
+            <a href="#">
+                Ver Proyecto
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function mostrarSeccion(id){
+
+            let secciones = document.querySelectorAll('.seccion');
+
+            secciones.forEach(seccion => {
+                seccion.style.display = 'none';
+            });
+
+            document.getElementById(id).style.display = 'block';
+        }
+
+    </script>
 
 </body>
 </html>
